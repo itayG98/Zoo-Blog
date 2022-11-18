@@ -34,7 +34,7 @@ namespace Model.DAL
 
             Animel Elephant = new() { ID = Guid.NewGuid(), Name = "Elephent", BirthDate = new DateTime(2002, 6, 12), Description = "Test", CategoryID = Mammal.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/Elephant.jpg") };
             Animel Eagel = new() { ID = Guid.NewGuid(), Name = "Eagel", BirthDate = new DateTime(2009, 12, 12), Description = "Test", CategoryID = Avian.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/Eagle.webp") };
-            Animel Squirl = new() { ID = Guid.NewGuid(), Name = "squirrel", BirthDate = new DateTime(2009, 12, 12), Description = "Test", CategoryID = Mammal.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/SQIRL.jpg") };
+            Animel Squirl = new() { ID = Guid.NewGuid(), Name = "Squirrel", BirthDate = new DateTime(2009, 12, 12), Description = "Test", CategoryID = Mammal.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/SQIRL.jpg") };
             Animel Monkey = new() { ID = Guid.NewGuid(), Name = "Monkey", BirthDate = new DateTime(2011, 12, 12), Description = "Test", CategoryID = Mammal.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/Monkey.jpg") };
             Animel Cow = new() { ID = Guid.NewGuid(), Name = "Cow", BirthDate = new DateTime(2011, 12, 12), Description = "Test", CategoryID = Mammal.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/Cow.jpg") };
             Animel Dolphin = new() { ID = Guid.NewGuid(), Name = "Dolphin", BirthDate = new DateTime(2011, 12, 12), Description = "Test", CategoryID = Mammal.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/Dolphin.jpg") };
@@ -44,9 +44,10 @@ namespace Model.DAL
             Animel Shark = new() { ID = Guid.NewGuid(), Name = "Shark", BirthDate = new DateTime(2011, 12, 12), Description = "Test", CategoryID = Aquadic.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/Shark.webp") };
             Animel Snake = new() { ID = Guid.NewGuid(), Name = "Snake", BirthDate = new DateTime(2011, 12, 12), Description = "Test", CategoryID = Reptile.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/Snake.jpg") };
             Animel Spider = new() { ID = Guid.NewGuid(), Name = "Spider", BirthDate = new DateTime(2011, 12, 12), Description = "Test", CategoryID = Insect.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/Spider.webp") };
-            Animel wagtail = new() { ID = Guid.NewGuid(), Name = "wagtail", BirthDate = new DateTime(2011, 12, 12), Description = "Test", CategoryID = Avian.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/wagtail.jpg") };
+            Animel wagtail = new() { ID = Guid.NewGuid(), Name = "Wagtail", BirthDate = new DateTime(2011, 12, 12), Description = "Test", CategoryID = Avian.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/wagtail.jpg") };
+            Animel bee = new() { ID = Guid.NewGuid(), Name = "Bee", BirthDate = new DateTime(2011, 12, 12), Description = "Test", CategoryID = Insect.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/Bee.png") };
 
-            modelBuilder.Entity<Animel>().HasData(Elephant, Eagel, Squirl, Monkey, Cow, Dolphin, Lion, Lizard, Owl, Shark, Snake, Spider, wagtail);
+            modelBuilder.Entity<Animel>().HasData(Elephant, Eagel, Squirl, Monkey, Cow, Dolphin, Lion, Lizard, Owl, Shark, Snake, Spider, wagtail,bee);
 
             modelBuilder.Entity<Comment>().HasData(
                 new Comment() { AnimelID = Eagel.ID, Content = "First init comment", CommentId = Guid.NewGuid() },
