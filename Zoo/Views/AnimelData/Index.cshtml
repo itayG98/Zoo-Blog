@@ -1,0 +1,74 @@
+﻿@using Model.Models
+@using Model.Services
+@model Comment
+@{
+    Animel currAnimel = ViewBag.Animel;
+}
+<h1 class="m-auto p-2 text-center bg-success">
+    @currAnimel.Name
+</h1>
+<div class="d-flex flex-wrap">
+    <div class="container d-coulomn col-6 flex-row form-group">
+        <div class="form-group row">
+            <label asp-for=@currAnimel.Name class="m-1"></label>
+            <input asp-for=@currAnimel.Name disabled class="m-1 fw-bold" />
+        </div>
+        <div class="form-group row">
+            <label asp-for=@currAnimel.Age class="m-1"></label>
+            <input asp-for=@currAnimel.Age disabled class="m-1 fw-bold" />
+        </div>
+        <div class="form-group row">
+            <label asp-for=@currAnimel.Description class="m-1"></label>
+            <input asp-for=@currAnimel.Description disabled class="m-1 fw-bold" />
+        </div>
+        <div class="form-group row">
+            <label asp-for=@currAnimel.CategoryEnum class="m-1"></label>
+            <input asp-for=@currAnimel.CategoryEnum disabled class="m-1 fw-bold " />
+        </div>
+    </div>
+    <div class="container d-coulomn col-6 flex-row">
+
+        <img class="rounded-2 img-thumbnail img-fluid"
+             src=@ImagesFormater.FormatRawDataToImage(currAnimel.ImageRawData)
+             alt=@currAnimel.Name />
+    </div>
+
+    <div class="col-10 m-auto">
+        @if (currAnimel.Comments?.Count > 0)
+        {
+            <h3 class="text-center p-1"> @currAnimel.Name's Comments</h3>
+            <h4>Add @currAnimel.Name another comment</h4>
+        }
+        else
+        {
+            <h4>Add @currAnimel.Name first comment</h4>
+        }
+
+        <form method="post">
+            <div class="from form-group">
+                <input type="hidden" asp-for=CommentId value=@Model.CommentId />
+                <input type="hidden" asp-for=Animel value=@currAnimel />
+                <input type="hidden" asp-for=AnimelID value=@currAnimel.ID />
+                <div class="d-flex flex-row mb-1">
+                    <div class="col-9">
+                        <textarea asp-for=Content class="form-control text-wrap bg-succses d-block" value="" placeholder="Leave comment here"> </textarea>
+                    </div>
+                    <div class="col-3">
+                        <input class="btn btn-primary form-control" type="submit" value="Submit" />
+                    </div>
+                </div>
+            </div>
+        </form>
+        @if (currAnimel.Comments?.Count > 0)
+        {
+            foreach (Comment comment in currAnimel.Comments)
+            {
+                <div class="container-fluid p-2 mb-1 text-left ">
+                    <textarea class="text-wrap bg-success text-white col-12">
+                        @comment.Content
+                                                </textarea>
+                </div>
+            }
+        }
+    </div>
+</div>
