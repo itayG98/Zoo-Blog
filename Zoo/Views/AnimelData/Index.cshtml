@@ -6,7 +6,7 @@
 }
 <script src="~/scripts/commentfetch.js"></script>
 <p hidden id="AnimelId">@currAnimel.ID</p>
-<p hidden id="CommentId">@Model.CommentId</p>
+
 <h1 class="m-auto p-2 text-center bg-success">
     @currAnimel.Name
 </h1>
@@ -68,16 +68,3 @@
         </div>
     </div>
 </div>
-
-@*
-                     @if (currAnimel.Comments?.Count > 0)
-        {
-            foreach (Comment comment in currAnimel.Comments)
-            {
-                <div class="container-fluid p-2 mb-1 text-left ">
-                    <textarea class="text-wrap bg-success text-white col-12" disabled>
-                        @comment.Content
-                    </textarea>
-                </div>
-            }
-        }*@

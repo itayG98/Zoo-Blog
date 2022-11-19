@@ -1,6 +1,5 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
     const id = document.querySelector("p#AnimelId").innerText;
-    const OriginalCommentId = document.querySelector("p#CommentId").innerText;
     const form = document.querySelector("form");
     const CommentsDiv = document.querySelector("div#Comments");
     const contentTextArea = document.querySelector("textarea#Content");
@@ -39,7 +38,7 @@
     }
     async function addComment(event) {
         let comment = {
-            CommentId: OriginalCommentId,
+            CommentId: undefined,
             Content: contentTextArea.value,
             AnimelID: id,
         }
