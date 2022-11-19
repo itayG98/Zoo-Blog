@@ -19,6 +19,7 @@ namespace Model.Models
         public virtual Animel Animel { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
+        [RegularExpression(".{3,200}$", ErrorMessage = "Please enter between 3-200 charecters")]
         [Display(Name = "Content")]
         public string? Content { get; set; }
 

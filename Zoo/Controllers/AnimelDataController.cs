@@ -17,6 +17,7 @@ namespace Zoo.Controllers
 
         public AnimelDataController(AnimelRepository animelRepository, CommentRepository commentRepository, CategoryRepository categoryRepository)
         {
+            ViewBag.Title = "Animel's Data";
             _animelRepository = animelRepository;
             _commentRepository = commentRepository;
             _categoryRepository = categoryRepository;
@@ -35,6 +36,9 @@ namespace Zoo.Controllers
             return Redirect("Home");
         }
 
+        /// <summary>
+        /// handle fetch api submiting
+        /// </summary>
         [HttpPost]
         public void Index([FromBody]Comment comment)
         {
@@ -44,6 +48,9 @@ namespace Zoo.Controllers
             _commentRepository.Create(comment);
         }
 
+        /// <summary>
+        /// handle fetch api get request
+        /// </summary>
         [HttpGet]
         public ActionResult<List<string>> GetComments(string id)
         {

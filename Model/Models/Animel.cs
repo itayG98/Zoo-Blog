@@ -20,16 +20,16 @@ namespace Model.Models
         public Guid ID { get; set; }
 
 
-        [Required(ErrorMessage = "Enter valid name between 2 and 25 charecters")]
+        [Required(ErrorMessage = "Enter the name")]
         [Display(Name = "Name")]
-        [RegularExpression("[A-Za-z\\s]{2,25}$")]
+        [RegularExpression("[A-Za-z\\s]{2,25}$",ErrorMessage = "Enter valid name between 2 and 25 charecters")]
         [DataType(DataType.Text)]
         public string? Name { get; set; }
 
 
         [Required(ErrorMessage = "Enter description please")]
         [Display(Name = "Description")]
-        [RegularExpression("[A-Za-z\\s]{3,200}$")]
+        [RegularExpression(".{3,200}$",ErrorMessage ="Please enter between 3-200 charecters")]
         [DataType(DataType.MultilineText)]
         public string? Description { get; set; }
 

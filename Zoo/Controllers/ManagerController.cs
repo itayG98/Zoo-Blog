@@ -13,6 +13,7 @@ namespace Zoo.Controllers
 
         public ManagerController(AnimelRepository animelRepository, CategoryRepository categoryRepository)
         {
+            ViewBag.Title = "Manager Zone";
             _animelRepository = animelRepository;
             _categoryRepository = categoryRepository;
         }

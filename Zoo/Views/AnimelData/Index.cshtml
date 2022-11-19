@@ -54,7 +54,7 @@
                 <input type="hidden" asp-for=AnimelID value=@currAnimel.ID />
                 <div class="d-flex flex-row mb-1">
                     <div class="col-9">
-                        <textarea asp-for=Content class="form-control text-wrap bg-succses d-block" value="" placeholder="Leave comment here"> </textarea>
+                        <textarea asp-for=Content class="form-control text-wrap bg-succses d-block" value="" placeholder="Leave comment here" maxlength="200"> </textarea>
                     </div>
                     <div class="col-3">
                         <input class="btn btn-primary form-control" type="submit" value="Submit" />

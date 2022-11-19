@@ -21,7 +21,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ZooDBContext>();
-    //context.Database.EnsureDeleted(); //For ReSeedng the Database
+    context.Database.EnsureDeleted(); //For ReSeedng the Database
     context.Database.EnsureCreated();
 }
 
