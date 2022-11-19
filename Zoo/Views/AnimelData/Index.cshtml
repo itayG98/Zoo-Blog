@@ -49,9 +49,6 @@
 
         <form method="post">
             <div class="from form-group">
-                <input type="hidden" asp-for=CommentId value=@Model.CommentId />
-                <input type="hidden" asp-for=Animel value=@currAnimel />
-                <input type="hidden" asp-for=AnimelID value=@currAnimel.ID />
                 <div class="d-flex flex-row mb-1">
                     <div class="col-9">
                         <textarea asp-for=Content class="form-control text-wrap bg-succses d-block" value="" placeholder="Leave comment here" maxlength="200"> </textarea>
