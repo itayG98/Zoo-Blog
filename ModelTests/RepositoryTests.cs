@@ -388,5 +388,16 @@ namespace ModelTests
             Assert.That(generetedId == id, Is.True);
         }
 
+        [Test]
+        public void FindWithComments()
+        {
+            _categoryRepository.Create(categoryTest);
+            _animelRepository.Create(animelTest);
+            _commentRepository.Create(commentTest);
+            List<Comment> comments = _commentRepository.FindByCondition(c => c.AnimelID == animelTest.ID).ToList();
+            Animel a = _animelRepository.FindWithComments(animelTest.ID);
+            Assert.That(comments.SequenceEqual(a.Comments), Is.True);
+
+        }
     }
 }
