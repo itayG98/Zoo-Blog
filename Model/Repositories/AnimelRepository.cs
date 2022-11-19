@@ -25,6 +25,6 @@ namespace Model.Repositories
             => DbContext.Set<Animel>()!.Include(a => a.Comments).AsEnumerable();
 
         public Animel FindWithComments(Guid id)
-         => DbContext.Set<Animel>()!.Include(a => a.Comments)?.FirstOrDefault(a => a.ID == id);
+         => DbContext.Set<Animel>().Include(a => a.Comments).FirstOrDefault(a => a.ID == id);
     }
 }

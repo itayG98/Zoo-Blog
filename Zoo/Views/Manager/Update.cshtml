@@ -4,7 +4,8 @@
 @inject CategoryRepository categoryRepo
 
 @model Animel 
-<partial name="_AnimelUpdateFormValidator" />
+<script src="~/scripts/animelupdateformvalidator.js"></script>
+
 <div container-fluid>
 <form method="post" class="form" enctype="multipart/form-data"> 
     <h2>Update @Model.Name</h2>

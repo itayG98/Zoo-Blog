@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Model.Models;
 using Model.Repositories;
-using System.ComponentModel;
+using System.Collections.Immutable;
+using System.Linq;
+using System.Xml.Linq;
+using System.Text.Json;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Zoo.Controllers
 {
@@ -11,7 +15,7 @@ namespace Zoo.Controllers
         private readonly CommentRepository _commentRepository;
         private readonly CategoryRepository _categoryRepository;
 
-        public AnimelDataController(AnimelRepository animelRepository, CommentRepository commentRepository,CategoryRepository categoryRepository)
+        public AnimelDataController(AnimelRepository animelRepository, CommentRepository commentRepository, CategoryRepository categoryRepository)
         {
             _animelRepository = animelRepository;
             _commentRepository = commentRepository;
@@ -30,12 +34,30 @@ namespace Zoo.Controllers
             }
             return Redirect("Home");
         }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Index(Comment comment)
+        public void Index([FromBody]Comment comment)
         {
+            comment.CommentId= Guid.NewGuid();
+            if (ModelState.IsValid ||
+                (ModelState.ErrorCount==1 && ModelState.GetFieldValidationState("Animel") == ModelValidationState.Invalid))
             _commentRepository.Create(comment);
-            return Index(comment.AnimelID);
+        }
+
+        [HttpGet]
+        public ActionResult<List<string>> GetComments(string id)
+        {
+            if (id != null && Guid.Parse(id) is Guid guidId)
+            {
+                List<Comment> comments = (_animelRepository.FindWithComments(guidId).Comments.ToList());
+                List<string> contents = new List<string>();
+                if (comments != default && comments.Count > 0)
+                    foreach (Comment comment in comments)
+                        contents.Add(comment.Content);
+                return contents;
+            }
+            else
+                return default;
         }
     }
 }
