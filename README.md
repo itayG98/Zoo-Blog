@@ -28,8 +28,10 @@ https://github.com/itayG98/Zoo-Blog/blob/0a9486196c9483055d269c8b58c11fc163ce114
 
 In order to generate the categories i made an Enum helper model which is not mapped in to the DataBase but i use to generate apropriate select tag
 
-The model project contains also the data access layer the repository and one image formatter service.
-which help me to save the images files as bytes array and generate the image back on the client side
+The model project contains also the data access layer  Generic base Repsoitory class for each entity whom id is of type Guid and one service of image formating which help me to save the images files as bytes array and generate the image back on the client side
+  
+  https://github.com/itayG98/Zoo-Blog/blob/4cb7b9c64a162334470dfd2d8aff94882166ae09/Model/Services/ImagesFormater.cs#L29-L39
+  https://github.com/itayG98/Zoo-Blog/blob/4cb7b9c64a162334470dfd2d8aff94882166ae09/Model/Services/ImagesFormater.cs#L83-L90
 
 
  ## View
@@ -48,8 +50,8 @@ which help me to save the images files as bytes array and generate the image bac
  2. Manager - Handling the CRUD operation on the animals data
  3. Catalog - view the animals in the blog and can sort them by category
  4. Animel Data - Explore the animals details and allow the user to leave a comment. The comment posting uses Fetch api in order to prevent the page to relload each time the user post a comment.
-
-
+ 
+https://github.com/itayG98/Zoo-Blog/blob/4cb7b9c64a162334470dfd2d8aff94882166ae09/Zoo/wwwroot/Scripts/CommentFetch.js#L39-L53
  
  <p align="center" >Hello world comment</p>
 <p align="center">
