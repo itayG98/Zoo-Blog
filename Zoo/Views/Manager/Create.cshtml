@@ -9,19 +9,19 @@
 
          <div class="form-group row">
          <label asp-for="Name" class=" m-1"></label>
-         <input asp-for="Name" class="form-control text-bg-success" /> 
-         <span asp-validation-for="Name"></span>
+                <input asp-for="Name" class="form-control text-bg-success" required />
+                <span asp-validation-for="Name"></span>
          </div>
 
          <div   class="form-group row ">
-         <label asp-for="BirthDate" class=" m-1" ></label> 
-         <input asp-for="BirthDate" class="form-control text-bg-success" />
+         <label asp-for="BirthDate" class=" m-1" ></label>
+                <input asp-for="BirthDate" class="form-control text-bg-success" required />
          <span asp-validation-for="BirthDate"></span>
          </div>
 
          <div  class="form-group row" >
          <label asp-for="Description" class=" m-1"></label>
-                <input asp-for="Description" class="form-control text-bg-success" maxlength="200" />
+                <input asp-for="Description" class="form-control text-bg-success" maxlength="200" required />
          <span asp-validation-for="Description"></span>
          </div>
 

@@ -22,7 +22,7 @@ namespace Model.Models
 
         [Required(ErrorMessage = "Enter the name")]
         [Display(Name = "Name")]
-        [RegularExpression("[A-Za-z\\s]{2,25}$",ErrorMessage = "Enter valid name contain only letters charecters")]
+        [RegularExpression("[A-Za-z\\s]{2,25}$",ErrorMessage = "Enter valid name contain 2-25 letters only only")]
         [MinLength(2)]
         [MaxLength(25)]
         [DataType(DataType.Text)]
