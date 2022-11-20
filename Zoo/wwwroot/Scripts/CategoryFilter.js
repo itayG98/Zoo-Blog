@@ -1,8 +1,8 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
-  let animelsContainers;
+  let animalsContainers;
   let categoryButtons = document.querySelectorAll("button.btn.btn-warning.m-2");
-  function getAnimels() {
-    animelsContainers = document.querySelectorAll("div.container.animel");
+  function getAnimals() {
+    animalsContainers = document.querySelectorAll("div.container.animal");
   }
   categoryButtons.forEach((a) =>
     a.addEventListener("click", (event) => {
@@ -11,8 +11,8 @@
   );
 
   function filter(category) {
-    getAnimels();
-    animelsContainers.forEach((a) => {
+    getAnimals();
+    animalsContainers.forEach((a) => {
       if (category === "All categories") {
         a.classList.remove("d-none");
       } else if (!a.classList.contains(category)) {

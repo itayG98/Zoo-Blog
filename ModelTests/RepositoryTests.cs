@@ -9,12 +9,12 @@ namespace ModelTests
     public class Tests
     {
         private ZooDBContext _context;
-        private AnimelRepository? _animelRepository;
+        private AnimalRepository? _animelRepository;
         private CommentRepository? _commentRepository;
         private CategoryRepository? _categoryRepository;
 
-        private Animel? animelTest;
-        private Animel? Do_Not_Insret_Animel;
+        private Animal? animelTest;
+        private Animal? Do_Not_Insret_Animel;
         private Category? categoryTest;
         private Category? Do_Not_Insret_Category;
         private Comment? commentTest;
@@ -25,7 +25,7 @@ namespace ModelTests
         public void Setup()
         {
             _connString = "Data Source=MockDB.db;";
-            byte[] DeafualtRawData = Animel.DeafualtRawData;
+            byte[] DeafualtRawData = Animal.DeafualtRawData;
             var optionsBuilder = new DbContextOptionsBuilder<ZooDBContext>();
             optionsBuilder.UseSqlite(_connString);
             _context = new ZooDBContext(optionsBuilder.Options);
@@ -33,13 +33,13 @@ namespace ModelTests
             {
                 _context.Database.EnsureDeleted();
                 _context.Database.EnsureCreated();
-                _animelRepository = new AnimelRepository(_context);
+                _animelRepository = new AnimalRepository(_context);
                 _commentRepository = new CommentRepository(_context);
                 _categoryRepository = new CategoryRepository(_context);
                 categoryTest = new() { Name = "Test", CategoryID = Guid.NewGuid() };
                 animelTest = new() { ID = Guid.NewGuid(), Name = "Test", BirthDate = new DateTime(2002, 6, 12), Description = "", CategoryID = categoryTest.CategoryID, ImageRawData = DeafualtRawData };
-                commentTest = new() { CommentId = Guid.NewGuid(), AnimelID = animelTest.ID, Content = "Content" };
-                Do_Not_Insret_Animel = new Animel() { ID = Guid.NewGuid(), Name = "Never_Insert" };
+                commentTest = new() { CommentId = Guid.NewGuid(), AnimalID = animelTest.ID, Content = "Content" };
+                Do_Not_Insret_Animel = new Animal() { ID = Guid.NewGuid(), Name = "Never_Insert" };
                 Do_Not_Insret_Category = new Category() { CategoryID = Guid.NewGuid(), Name = "Nevet_Insert" };
             }
             if (_animelRepository is null ||
@@ -254,9 +254,9 @@ namespace ModelTests
             _animelRepository?.Create(animelTest!);
             _commentRepository?.Create(commentTest!);
 
-            Task<Animel> animelFound = _animelRepository!.FindByIDAsync(animelTest!.ID);
+            Task<Animal> animelFound = _animelRepository!.FindByIDAsync(animelTest!.ID);
             animelFound.ContinueWith(_ => { Assert.That(animelFound.Result, Is.EqualTo(animelTest)); });
-            Task<Animel> animelNotFound = _animelRepository.FindByIDAsync(Do_Not_Insret_Animel!.ID);
+            Task<Animal> animelNotFound = _animelRepository.FindByIDAsync(Do_Not_Insret_Animel!.ID);
             animelNotFound.ContinueWith(_ => { Assert.That(animelFound.Result, Is.Null); });
             Task<Comment> commentFound = _commentRepository!.FindByIDAsync(commentTest!.CommentId);
             commentFound.ContinueWith(_ => { Assert.That(commentFound.Result, Is.EqualTo(commentTest)); });
@@ -298,7 +298,7 @@ namespace ModelTests
             {
                 Assert.That(_animelRepository!.FindAll().ToList().Count(), Is.EqualTo(2));
                 Task<bool> animelCreation = _animelRepository.CreateAsync(animelTest!);
-                Task<IEnumerable<Animel>> animelLength = _animelRepository.FindAllAsync();
+                Task<IEnumerable<Animal>> animelLength = _animelRepository.FindAllAsync();
                 animelCreation.ContinueWith(_ => animelLength);
                 animelLength.ContinueWith(_ => Assert.That(animelLength.Result.ToArray().Length.Equals(3)));
 
@@ -356,14 +356,14 @@ namespace ModelTests
         [Test]
         public void FindAllWithComments()
         {
-            List<Animel> animels = _animelRepository!.FindAllWithComments().ToList();
+            List<Animal> animels = _animelRepository!.FindAllWithComments().ToList();
             Assert.That(animels.All(a => a.Comments != null), Is.True);
         }
         [Test]
         public void FindTopTrending()
         {
             int check = 2;
-            List<Animel> animels = _animelRepository!.FindTopTrending(check);
+            List<Animal> animels = _animelRepository!.FindTopTrending(check);
             Assert.That(animels.Count == check, Is.True);
             Assert.That(animels.OrderByDescending(a => a?.Comments?.Count).Take(check).SequenceEqual(animels), Is.True); ;
         }
@@ -394,8 +394,8 @@ namespace ModelTests
             _categoryRepository.Create(categoryTest);
             _animelRepository.Create(animelTest);
             _commentRepository.Create(commentTest);
-            List<Comment> comments = _commentRepository.FindByCondition(c => c.AnimelID == animelTest.ID).ToList();
-            Animel a = _animelRepository.FindWithComments(animelTest.ID);
+            List<Comment> comments = _commentRepository.FindByCondition(c => c.AnimalID == animelTest.ID).ToList();
+            Animal a = _animelRepository.FindWithComments(animelTest.ID);
             Assert.That(comments.SequenceEqual(a.Comments), Is.True);
 
         }

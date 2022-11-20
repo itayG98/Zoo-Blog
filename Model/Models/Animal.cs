@@ -6,12 +6,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Models
 {
-    public class Animel
+    public class Animal
     {
         private const string DefaultPath = "InitImages/Defult.jpg";
         private static readonly byte[] _deafualtRawData;
 
-        static Animel()
+        static Animal()
         {
             _deafualtRawData = ImagesFormater.ImageToBytesArrayFromLocalPath(DefaultPath);
         }
@@ -73,7 +73,7 @@ namespace Model.Models
         public static byte[] DeafualtRawData => _deafualtRawData;
         public override bool Equals(object? obj)
         {
-            if (obj is Animel other && other != default)
+            if (obj is Animal other && other != default)
                 return other.ID == ID;
             return false;
         }

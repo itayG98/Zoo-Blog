@@ -1,5 +1,5 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
-    const id = document.querySelector("p#AnimelId").innerText;
+    const id = document.querySelector("p#AnimalId").innerText;
     const form = document.querySelector("form");
     const CommentsDiv = document.querySelector("div#Comments");
     const contentTextArea = document.querySelector("textarea#Content");

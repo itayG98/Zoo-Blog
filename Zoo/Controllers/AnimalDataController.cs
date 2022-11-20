@@ -9,15 +9,15 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Zoo.Controllers
 {
-    public class AnimelDataController : Controller
+    public class AnimalDataController : Controller
     {
-        private readonly AnimelRepository _animelRepository;
+        private readonly AnimalRepository _animelRepository;
         private readonly CommentRepository _commentRepository;
         private readonly CategoryRepository _categoryRepository;
 
-        public AnimelDataController(AnimelRepository animelRepository, CommentRepository commentRepository, CategoryRepository categoryRepository)
+        public AnimalDataController(AnimalRepository animelRepository, CommentRepository commentRepository, CategoryRepository categoryRepository)
         {
-            ViewBag.Title = "Animel's Data";
+            ViewBag.Title = "Animal's Data";
             _animelRepository = animelRepository;
             _commentRepository = commentRepository;
             _categoryRepository = categoryRepository;
@@ -26,11 +26,11 @@ namespace Zoo.Controllers
         [HttpGet]
         public IActionResult Index(Guid id)
         {
-            Animel animel = _animelRepository.FindWithComments(id);
+            Animal animel = _animelRepository.FindWithComments(id);
             if (animel != null)
             {
                 animel.CategoryEnum = _categoryRepository.MatchGuidIdToCategoryEnum(animel.CategoryID);
-                ViewBag.Animel = animel;
+                ViewBag.Animal = animel;
                 return View(new Comment() { CommentId = Guid.NewGuid() });
             }
             return Redirect("Home");
@@ -44,7 +44,7 @@ namespace Zoo.Controllers
         {
             comment.CommentId= Guid.NewGuid();
             if (ModelState.IsValid ||
-                (ModelState.ErrorCount==1 && ModelState.GetFieldValidationState("Animel") == ModelValidationState.Invalid))
+                (ModelState.ErrorCount==1 && ModelState.GetFieldValidationState("Animal") == ModelValidationState.Invalid))
             _commentRepository.Create(comment);
         }
 

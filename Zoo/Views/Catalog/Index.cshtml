@@ -2,7 +2,7 @@
 @using Model.Services
 @using Model.Repositories
 
-@model List<Animel>
+@model List<Animal>
 <script src="~/scripts/categoryfilter.js"></script>
 <h2 class="text-bg-success text-center p-2">
     Our Catalog
@@ -15,5 +15,5 @@
     }
                 <button class="btn btn-warning m-2 all">All categories</button>
 </div>
-    @await Component.InvokeAsync("Animels",Model)
+    @await Component.InvokeAsync("Animals",Model)
 

@@ -13,7 +13,7 @@ builder.Services.AddDbContext<ZooDBContext>(options =>
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 }
 );
-builder.Services.AddScoped<AnimelRepository>();
+builder.Services.AddScoped<AnimalRepository>();
 builder.Services.AddScoped<CategoryRepository>();
 builder.Services.AddScoped<CommentRepository>();
 

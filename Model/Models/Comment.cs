@@ -13,10 +13,10 @@ namespace Model.Models
         [Key]
         public Guid CommentId { get; set; }
         [Required]
-        public virtual Guid AnimelID { get; set; }
+        public virtual Guid AnimalID { get; set; }
 
-        [ForeignKey("AnimelID")]
-        public virtual Animel Animel { get; set; }
+        [ForeignKey("AnimalID")]
+        public virtual Animal Animal { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
         [RegularExpression(".{3,200}$", ErrorMessage = "Please enter between 3-200 charecters")]

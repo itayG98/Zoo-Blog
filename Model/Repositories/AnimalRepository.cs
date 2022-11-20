@@ -12,19 +12,19 @@ using System.Threading.Tasks;
 
 namespace Model.Repositories
 {
-    public class AnimelRepository : ZooRepository<Animel>
+    public class AnimalRepository : ZooRepository<Animal>
     {
-        public AnimelRepository(ZooDBContext dbContext) : base(dbContext)
+        public AnimalRepository(ZooDBContext dbContext) : base(dbContext)
         {
         }
 
-        public  List<Animel> FindTopTrending(int count)
+        public  List<Animal> FindTopTrending(int count)
             => FindAllWithComments().OrderByDescending(c => c.Comments?.Count).Take(count).ToList();
 
-        public IEnumerable<Animel> FindAllWithComments()
-            => DbContext.Set<Animel>()!.Include(a => a.Comments).AsEnumerable();
+        public IEnumerable<Animal> FindAllWithComments()
+            => DbContext.Set<Animal>()!.Include(a => a.Comments).AsEnumerable();
 
-        public Animel FindWithComments(Guid id)
-         => DbContext.Set<Animel>().Include(a => a.Comments).FirstOrDefault(a => a.ID == id);
+        public Animal FindWithComments(Guid id)
+         => DbContext.Set<Animal>().Include(a => a.Comments).FirstOrDefault(a => a.ID == id);
     }
 }

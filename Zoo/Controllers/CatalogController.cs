@@ -6,8 +6,8 @@ namespace Zoo.Controllers
 {
     public class CatalogController : Controller
     {
-        private readonly AnimelRepository _animelRepository;
-        public CatalogController(AnimelRepository animelRepository)
+        private readonly AnimalRepository _animelRepository;
+        public CatalogController(AnimalRepository animelRepository)
         {
             _animelRepository = animelRepository;
         }

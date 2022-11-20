@@ -8,10 +8,10 @@ namespace Zoo.Controllers
 {
     public class ManagerController : Controller
     {
-        private readonly AnimelRepository _animelRepository;
+        private readonly AnimalRepository _animelRepository;
         private readonly CategoryRepository _categoryRepository;
 
-        public ManagerController(AnimelRepository animelRepository, CategoryRepository categoryRepository)
+        public ManagerController(AnimalRepository animelRepository, CategoryRepository categoryRepository)
         {
             ViewBag.Title = "Manager Zone";
             _animelRepository = animelRepository;
@@ -21,7 +21,7 @@ namespace Zoo.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            List<Animel> animels = _animelRepository.FindAll().ToList();
+            List<Animal> animels = _animelRepository.FindAll().ToList();
             animels.ForEach(a => a.CategoryEnum = _categoryRepository.MatchGuidIdToCategoryEnum(a.CategoryID));
             return View(animels);
         }
@@ -32,7 +32,7 @@ namespace Zoo.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Animel animel)
+        public IActionResult Create(Animal animel)
         {
             if (ModelState.IsValid)
             {
@@ -40,7 +40,7 @@ namespace Zoo.Controllers
                 if (animel.ImageFile != default)
                     animel.ImageRawData = ImagesFormater.IFormFileToByteArray(animel.ImageFile);
                 else
-                    animel.ImageRawData = Animel.DeafualtRawData;
+                    animel.ImageRawData = Animal.DeafualtRawData;
                 _animelRepository.Create(animel);
                 return Redirect("Index");
             }
@@ -50,7 +50,7 @@ namespace Zoo.Controllers
         [HttpGet]
         public IActionResult Update(Guid id)
         {
-            Animel toUpdate = _animelRepository.Find(id);
+            Animal toUpdate = _animelRepository.Find(id);
             toUpdate.CategoryEnum = _categoryRepository.MatchGuidIdToCategoryEnum(toUpdate.CategoryID);
             if (toUpdate != null)
                 return View(toUpdate);
@@ -59,7 +59,7 @@ namespace Zoo.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Animel animel)
+        public IActionResult Update(Animal animel)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace Zoo.Controllers
         [HttpGet]
         public IActionResult Delete(Guid id)
         {
-            Animel ToDelete = _animelRepository.Find(id);
+            Animal ToDelete = _animelRepository.Find(id);
             if (ToDelete != null)
                 return View(ToDelete);
             return Redirect("Manager");
@@ -97,7 +97,7 @@ namespace Zoo.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(Animel animel)
+        public IActionResult Delete(Animal animel)
         {
             _animelRepository.Delete(animel.ID);
             return Redirect("Index");

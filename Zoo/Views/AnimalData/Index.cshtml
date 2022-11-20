@@ -2,49 +2,49 @@
 @using Model.Services
 @model Comment
 @{
-    Animel currAnimel = ViewBag.Animel;
+    Animal currAnimal = ViewBag.Animal;
 }
 <script src="~/scripts/commentfetch.js"></script>
-<p hidden id="AnimelId">@currAnimel.ID</p>
+<p hidden id="AnimalId">@currAnimal.ID</p>
 
 <h1 class="m-auto p-2 text-center bg-success">
-    @currAnimel.Name
+    @currAnimal.Name
 </h1>
 <div class="d-flex flex-wrap">
     <div class="container d-coulomn col-6 flex-row form-group">
         <div class="form-group row">
-            <label asp-for=@currAnimel.Name class="m-1"></label>
-            <input asp-for=@currAnimel.Name disabled class="m-1 fw-bold" />
+            <label asp-for=@currAnimal.Name class="m-1"></label>
+            <input asp-for=@currAnimal.Name disabled class="m-1 fw-bold" />
         </div>
         <div class="form-group row">
-            <label asp-for=@currAnimel.Age class="m-1"></label>
-            <input asp-for=@currAnimel.Age disabled class="m-1 fw-bold" />
+            <label asp-for=@currAnimal.Age class="m-1"></label>
+            <input asp-for=@currAnimal.Age disabled class="m-1 fw-bold" />
         </div>
         <div class="form-group row">
-            <label asp-for=@currAnimel.Description class="m-1"></label>
-            <input asp-for=@currAnimel.Description disabled class="m-1 fw-bold" />
+            <label asp-for=@currAnimal.Description class="m-1"></label>
+            <input asp-for=@currAnimal.Description disabled class="m-1 fw-bold" />
         </div>
         <div class="form-group row">
-            <label asp-for=@currAnimel.CategoryEnum class="m-1"></label>
-            <input asp-for=@currAnimel.CategoryEnum disabled class="m-1 fw-bold " />
+            <label asp-for=@currAnimal.CategoryEnum class="m-1"></label>
+            <input asp-for=@currAnimal.CategoryEnum disabled class="m-1 fw-bold " />
         </div>
     </div>
     <div class="container d-coulomn col-6 flex-row">
 
         <img class="rounded-2 img-thumbnail img-fluid"
-             src=@ImagesFormater.FormatRawDataToImage(currAnimel.ImageRawData)
-             alt=@currAnimel.Name />
+             src=@ImagesFormater.FormatRawDataToImage(currAnimal.ImageRawData)
+             alt=@currAnimal.Name />
     </div>
 
     <div class="col-10 m-auto">
-        @if (currAnimel.Comments?.Count > 0)
+        @if (currAnimal.Comments?.Count > 0)
         {
-            <h3 class="text-center p-1"> @currAnimel.Name's Comments</h3>
-            <h4>Add @currAnimel.Name another comment</h4>
+            <h3 class="text-center p-1"> @currAnimal.Name's Comments</h3>
+            <h4>Add @currAnimal.Name another comment</h4>
         }
         else
         {
-            <h4>Add @currAnimel.Name first comment</h4>
+            <h4>Add @currAnimal.Name first comment</h4>
         }
 
         <form method="post">
