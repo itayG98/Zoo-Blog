@@ -43,6 +43,8 @@ The model project contains also the data access layer  Generic base Repsoitory c
   <img width="700"  src="https://user-images.githubusercontent.com/91791115/202901618-8e64cce6-d52f-43da-82e9-15318e100dbb.jpg">
 </p>
 
+The manager view of Create and update contain a vannila JS validation of the file type and it size in order to prevent the browser to throw an error
+https://github.com/itayG98/Zoo-Blog/blob/a257d540924d53627b48daadafc260d0006fe2c4/Zoo/wwwroot/Scripts/AnimelCreateFormValidator.js#L23-L46
 
   ## Controllers
  This project contain 4 controllers :
