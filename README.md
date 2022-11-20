@@ -1,11 +1,10 @@
-# Zoo-Blog wevb app
+# Zoo-Blog web app
 ## Asp Net.Core MVC  web app using MSSQL as database and EF6
 
 <p align="center" >Main catalog page where you can scroll and choose animel to explore and comment</p>
 <p align="center">
-  <img width="600"  src="https://user-images.githubusercontent.com/91791115/202901910-3d779ee1-089e-45d9-8590-581d5680a814.jpg">
+  <img width="600"  src="https://user-images.githubusercontent.com/91791115/202903498-6fb8f5dc-bd28-49b2-b7b3-53a8f4cb4667.jpg">
 </p>
-
 
  ## About 
 
@@ -17,7 +16,7 @@ I also used boostrap style
  
 <p align="center" >MSSQLA Diagram</p>
 <p align="center">
-  <img width="600"  src="https://user-images.githubusercontent.com/91791115/202903162-5d404a42-0fa5-4d17-b041-de35c044f036.jpg)">
+  <img width="600"  src="https://user-images.githubusercontent.com/91791115/202903162-5d404a42-0fa5-4d17-b041-de35c044f036.jpg">
 
 My model contain 3 objects : Category ,Animal and Comment.
 I gave each of them severla propetries and fitting validation attributes including Regex patterns, Data type custom messege error etc..
