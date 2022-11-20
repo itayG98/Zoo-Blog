@@ -3,8 +3,9 @@
 
 <p align="center" >Main catalog page where you can scroll and choose animel to explore and comment</p>
 <p align="center">
-  <img width="600"  src="https://user-images.githubusercontent.com/91791115/202900134-5fd41725-baf4-4177-ad3c-afe78cda40ce.jpg">
+  <img width="600"  src="https://user-images.githubusercontent.com/91791115/202901910-3d779ee1-089e-45d9-8590-581d5680a814.jpg">
 </p>
+
 
  ## About 
 
@@ -15,10 +16,12 @@ I also used boostrap style
  ## Model
 
 My model contain 3 objects : Category ,Animal and Comment.
-I gave each of them severla propetries and fitting validation attributes .
+I gave each of them severla propetries and fitting validation attributes including Regex patterns, Data type custom messege error etc..
 I created two custom Vlidation Attributes: 
 1. Birthdate to validate the animal is less than 150 years and was born in the current day or earlier
 2. File validator to check wether if the file's content Type include the word "Image" and the size of the file limited to 10MB 
+
+https://github.com/itayG98/Zoo-Blog/blob/0a9486196c9483055d269c8b58c11fc163ce114d/Model/Models/Attributes/ImageFileValidationAttribute.cs#L11-L26
 
 In order to generate the categories i made an Enum helper model which is not mapped in to the DataBase but i use to generate apropriate select tag
 
@@ -44,5 +47,12 @@ In order to generate the categories i made an Enum helper model which is not map
   <img width="700"  src="https://user-images.githubusercontent.com/91791115/202901759-39421184-95c9-4a33-bd18-38543c79cc81.jpg">
 </p>
 
+## Unit Testing
+This web app solution includes one class of testing for the repository layer checking and validating the who ReposiroeyBase class for both sunc and async method .
+ 
+  <p align="center" > Test example :</p>
+<p align="center">
+ https://github.com/itayG98/Zoo-Blog/blob/0a9486196c9483055d269c8b58c11fc163ce114d/ModelTests/RepositoryTests.cs#L317-L335
+</p>
 
 
