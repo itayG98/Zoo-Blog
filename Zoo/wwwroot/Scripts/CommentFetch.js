@@ -3,7 +3,7 @@
   const form = document.querySelector("form");
   const CommentsDiv = document.querySelector("div#Comments");
   const contentTextArea = document.querySelector("textarea#Content");
-  const BaseUrl = "http://localhost:5063/AnimelData";
+  const BaseUrl = "http://localhost:5063/AnimalData";
   const getComments = "GetComments";
 
   //init
@@ -49,7 +49,7 @@
     let comment = {
       CommentId: undefined,
       Content: contentTextArea.value,
-      AnimelID: id,
+      AnimalID: id,
     };
     comment = JSON.stringify(comment);
     await fetch(`${BaseUrl}/Index`, {
