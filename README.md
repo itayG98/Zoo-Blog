@@ -9,8 +9,8 @@
  ## About 
 
 This Asp.NetCore web app demonstrates MVC pattern with one Layout view contains nav bar and renderend body with difrrent views and controllers.
-I included one View-Component in order to keep the animels exploring divs more common between pages 
-I also used boostrap style 
+I included one View-Component in order to keep the animels exploring divs more common between pages and styled using
+boostrap libary
 
  ## Model
  
@@ -19,7 +19,7 @@ I also used boostrap style
   <img width="600"  src="https://user-images.githubusercontent.com/91791115/202903162-5d404a42-0fa5-4d17-b041-de35c044f036.jpg">
 
 My model contain 3 objects : Category ,Animal and Comment.
-I gave each of them severla propetries and fitting validation attributes including Regex patterns, Data type custom messege error etc..
+I gave each of them several propetries and fitting validation attributes including Regex patterns, Data type custom messege errors etc..
 I created two custom Vlidation Attributes: 
 1. Birthdate to validate the animal is less than 150 years and was born in the current day or earlier
 2. File validator to check wether if the file's content Type include the word "Image" and the size of the file limited to 10MB 
