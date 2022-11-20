@@ -18,7 +18,7 @@
     <div class="container-fluid justify-content-between d-flex flex-wrap">
         @foreach (Animal animal in Model)
         {
-                <div class="container d-coulomn col-4 flex-column d-flex justify-content-center animel @animal.CategoryEnum.ToString() ">
+                <div class="container d-coulomn col-4 flex-column d-flex justify-content-center animal @animal.CategoryEnum.ToString() ">
                 <h2 class="m-auto p-2 text-center ">@animal.Name</h2>
                 <a asp-action="Update" asp-controller="Manager" asp-route-id=@animal.ID>
                     <img class="rounded-2 img-thumbnail img-fluid" 
