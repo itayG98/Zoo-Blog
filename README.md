@@ -47,7 +47,9 @@ which help me to save the images files as bytes array and generate the image bac
  1. Home - displaying the two most commented animals
  2. Manager - Handling the CRUD operation on the animals data
  3. Catalog - view the animals in the blog and can sort them by category
- 4. Animel Data - Explore the animals details and allow the user to leave a comment.
+ 4. Animel Data - Explore the animals details and allow the user to leave a comment. The comment posting uses Fetch api in order to prevent the page to relload each time the user post a comment.
+
+
  
  <p align="center" >Hello world comment</p>
 <p align="center">
@@ -61,5 +63,4 @@ This web app solution includes one class of testing for the repository layer che
 <p align="center">
  https://github.com/itayG98/Zoo-Blog/blob/0a9486196c9483055d269c8b58c11fc163ce114d/ModelTests/RepositoryTests.cs#L317-L335
 </p>
-
 
