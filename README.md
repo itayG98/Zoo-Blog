@@ -14,7 +14,7 @@ I also used boostrap style
 
  ## Model
  
-<p align="center" >MSSQLA Diagram</p>
+<p align="center" >MSSQL Diagram</p>
 <p align="center">
   <img width="600"  src="https://user-images.githubusercontent.com/91791115/202903162-5d404a42-0fa5-4d17-b041-de35c044f036.jpg">
 
