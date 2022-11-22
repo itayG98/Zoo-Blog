@@ -24,7 +24,7 @@ namespace Model.Repositories
         public IEnumerable<Animal> FindAllWithComments()
             => DbContext.Set<Animal>()!.Include(a => a.Comments).AsEnumerable();
 
-        public Animal FindWithComments(Guid id)
+        public Animal? FindWithComments(Guid id)
          => DbContext.Set<Animal>().Include(a => a.Comments).FirstOrDefault(a => a.ID == id);
     }
 }
