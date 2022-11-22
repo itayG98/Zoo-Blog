@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,7 @@ namespace Model.Repositories
     /// <typeparam name="TDBContext">A class which inherit from EntityFrameWorkCore.DBContext</typeparam>
     public abstract class RepositoryBase<T, TDBContext> : IRepositoryBase<T, TDBContext> 
         where T : class 
-        where TDBContext : DbContext
+        where TDBContext : IdentityDbContext<IdentityUser>
     {
         protected TDBContext DbContext { get; set; }
         public RepositoryBase(TDBContext dbContext)

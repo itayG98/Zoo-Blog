@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +16,7 @@ namespace Model.Repositories
     /// <typeparam name="T">Type of object</typeparam>
     /// <typeparam name="TDBContext">DBContext derived class </typeparam>
 
-    public interface IRepositoryBase<T,TDBContext> where T : class where TDBContext : DbContext 
+    public interface IRepositoryBase<T,TDBContext> where T : class where TDBContext : IdentityDbContext<IdentityUser>
     {
         //IQueryable<T> GetAllSortedBy(IComparer<T> comp); //May add later
         public Task<IEnumerable<T>> FindByConditionAsync(Expression<Func<T, bool>> expression);
