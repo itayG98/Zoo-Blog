@@ -1,7 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Model.DAL;
 using Model.Repositories;
-using Zoo.Views.ViewComponents;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -9,10 +9,10 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddDbContext<ZooDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"));
-    options.EnableSensitiveDataLogging();
-    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 }
 );
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+        .AddEntityFrameworkStores<ZooDBContext>();
 builder.Services.AddScoped<AnimalRepository>();
 builder.Services.AddScoped<CategoryRepository>();
 builder.Services.AddScoped<CommentRepository>();
@@ -25,8 +25,11 @@ using (var scope = app.Services.CreateScope())
     context.Database.EnsureCreated();
 }
 
-app.UseStaticFiles();
+
+app.UseAuthentication();
 app.UseRouting();
+app.UseAuthorization();
+app.UseStaticFiles();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
