@@ -16,10 +16,18 @@ namespace Model.Models
         public string? Username { get; set; }
 
         [Required]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,20}$",
+            ErrorMessage = "Must contain at least one lower case one upper case on digit and speacial charcters between  8 to 20 chars")]
+        [MinLength(8)]
+        [MaxLength(20)]
         [DataType(DataType.Password)]
         public string? Password { get; set; }
 
         [Required]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,20}$",
+            ErrorMessage ="Must contain at least one lower case one upper case on digit and speacial charcters between  8 to 20 chars")]
+        [MinLength(8)]
+        [MaxLength(20)]
         [DataType(DataType.Password)]
         [Compare("Password",
             ErrorMessage = "The two passwords must mach")]

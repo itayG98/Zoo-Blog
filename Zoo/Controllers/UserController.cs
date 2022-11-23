@@ -23,6 +23,7 @@ namespace Zoo.Controllers
             return View(new LoginModel());
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)
         {
             if (ModelState.IsValid)
@@ -43,19 +44,28 @@ namespace Zoo.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp(SignUpModel user)
         {
-            IdentityUser IDuser = new IdentityUser
+            if (ModelState.IsValid)
             {
-                UserName = user.Username,
-                PhoneNumber = user.PhoneNumber,
-                Email = user.Email
-            };
-            var result = await _userManager.CreateAsync(IDuser, user.Password);
+                IdentityUser IDuser = new IdentityUser
+                {
+                    UserName = user.Username,
+                    PhoneNumber = user.PhoneNumber,
+                    Email = user.Email
+                };
+                var createResult = await _userManager.CreateAsync(IDuser, user.Password);
 
-            if (result.Succeeded)
-            {
-                return RedirectToAction("Index", "Home");
+                if (createResult.Succeeded)
+                {
+                    var signUpResult = await _signInManager.PasswordSignInAsync(user.Username, user.Password, false, false);
+                    if (signUpResult.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    return Login();
+                }
             }
             return View();
         }
