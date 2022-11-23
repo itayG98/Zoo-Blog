@@ -6,6 +6,8 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Zoo.Controllers
 {
@@ -24,6 +26,7 @@ namespace Zoo.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index(Guid id)
         {
             Animal animel = _animelRepository.FindWithComments(id);
@@ -40,6 +43,7 @@ namespace Zoo.Controllers
         /// handle fetch api submiting
         /// </summary>
         [HttpPost]
+        [Authorize(Roles = "User,Admin")]
         public void Index([FromBody]Comment comment)
         {
             comment.CommentId= Guid.NewGuid();
@@ -52,6 +56,7 @@ namespace Zoo.Controllers
         /// handle fetch api get request
         /// </summary>
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult<List<string>> GetComments(string id)
         {
             if (id != null && Guid.Parse(id) is Guid guidId)

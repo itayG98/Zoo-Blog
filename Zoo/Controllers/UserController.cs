@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Model.Models;
+using System.Runtime.Intrinsics.X86;
 
 namespace Zoo.Controllers
 {
@@ -58,7 +59,7 @@ namespace Zoo.Controllers
                     Email = user.Email
                 };
                 var createResult = await _userManager.CreateAsync(IDuser, user.Password);
-
+                var addRole = await _userManager.AddToRoleAsync(IDuser, "User");
                 if (createResult.Succeeded)
                 {
                     var signUpResult = await _signInManager.PasswordSignInAsync(user.Username, user.Password, false, false);
