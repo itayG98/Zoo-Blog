@@ -19,7 +19,7 @@ namespace Model.Repositories
     /// <typeparam name="TDBContext">A class which inherit from EntityFrameWorkCore.DBContext</typeparam>
     public abstract class RepositoryBase<T, TDBContext> : IRepositoryBase<T, TDBContext> 
         where T : class 
-        where TDBContext : IdentityDbContext<IdentityUser>
+        where TDBContext : DbContext
     {
         protected TDBContext DbContext { get; set; }
         public RepositoryBase(TDBContext dbContext)

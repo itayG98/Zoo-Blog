@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Model.Models;
 using Model.Services;
 
 namespace Model.DAL
 {
-    public class ZooDBContext : IdentityDbContext<IdentityUser>
+    public class ZooDBContext : DbContext
     {
         public ZooDBContext(DbContextOptions<ZooDBContext> options) : base(options)
         {
@@ -51,7 +49,6 @@ namespace Model.DAL
                 new Comment() { AnimalID = Eagel.ID, Content = "Third init comment", CommentId = Guid.NewGuid() },
                 new Comment() { AnimalID = Elephant.ID, Content = "Initial comment", CommentId = Guid.NewGuid() }
                 );
-            base.OnModelCreating(modelBuilder);
 
         }
 

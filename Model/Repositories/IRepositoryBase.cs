@@ -16,7 +16,9 @@ namespace Model.Repositories
     /// <typeparam name="T">Type of object</typeparam>
     /// <typeparam name="TDBContext">DBContext derived class </typeparam>
 
-    public interface IRepositoryBase<T,TDBContext> where T : class where TDBContext : IdentityDbContext<IdentityUser>
+    public interface IRepositoryBase<T,TDBContext>
+        where T : class
+        where TDBContext : DbContext
     {
         //IQueryable<T> GetAllSortedBy(IComparer<T> comp); //May add later
         public Task<IEnumerable<T>> FindByConditionAsync(Expression<Func<T, bool>> expression);

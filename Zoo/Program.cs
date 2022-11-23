@@ -11,8 +11,13 @@ builder.Services.AddDbContext<ZooDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"));
 }
 );
+builder.Services.AddDbContext<ZooIdentityContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityUsersConnectionString"));
+}
+);
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-        .AddEntityFrameworkStores<ZooDBContext>();
+        .AddEntityFrameworkStores<ZooIdentityContext>();
 builder.Services.AddScoped<AnimalRepository>();
 builder.Services.AddScoped<CategoryRepository>();
 builder.Services.AddScoped<CommentRepository>();
@@ -21,7 +26,13 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ZooDBContext>();
-    //context.Database.EnsureDeleted(); //For deleting and Re-Seedng the Database
+    context.Database.EnsureDeleted(); //For deleting and Re-Seedng the Database
+    context.Database.EnsureCreated();
+}
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ZooIdentityContext>();
+    context.Database.EnsureDeleted(); //For deleting and Re-Seedng the Database
     context.Database.EnsureCreated();
 }
 
