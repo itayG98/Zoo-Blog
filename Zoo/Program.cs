@@ -9,13 +9,11 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddDbContext<ZooDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"));
-}
-);
+});
 builder.Services.AddDbContext<ZooIdentityContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityUsersConnectionString"));
-}
-);
+});
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
         .AddEntityFrameworkStores<ZooIdentityContext>();
 builder.Services.AddScoped<AnimalRepository>();

@@ -8,31 +8,31 @@
         <div class="form-group">
 
             <div class="form-group row">
-                <label asp-for="Name" class=" m-1"></label>
+                <label asp-for="Name" class="control-label m-1"></label>
                 <input asp-for="Name" class="form-control text-bg-success" required />
                 <span asp-validation-for="Name"></span>
             </div>
 
             <div class="form-group row ">
-                <label asp-for="BirthDate" class=" m-1"></label>
+                <label asp-for="BirthDate" class="control-label m-1"></label>
                 <input asp-for="BirthDate" class="form-control text-bg-success" required />
                 <span asp-validation-for="BirthDate"></span>
             </div>
 
             <div class="form-group row">
-                <label asp-for="Description" class=" m-1"></label>
+                <label asp-for="Description" class="control-label m-1"></label>
                 <input asp-for="Description" class="form-control text-bg-success" maxlength="200" required />
                 <span asp-validation-for="Description"></span>
             </div>
 
             <div class="form-group row">
-                <label asp-for="CategoryEnum" class="m-1"></label>
+                <label asp-for="CategoryEnum" class="control-label m-1"></label>
                 <select asp-for="CategoryEnum" asp-items="Html.GetEnumSelectList<CategoriesEnum>()" class="select form-select text-bg-success"></select>
             </div>
 
 
             <div class="form-group row custom-file">
-                <label asp-for="ImageFile" class=" m-1 custom-input-file"></label>
+                <label asp-for="ImageFile" class="control-label m-1 custom-input-file"></label>
                 <input asp-for="ImageFile" class="form-control custom-file-input text-bg-success" accept="image/*" required />
                 <span asp-validation-for="ImageFile"></span>
             </div>
