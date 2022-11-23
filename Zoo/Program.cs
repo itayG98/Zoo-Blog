@@ -24,13 +24,13 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ZooDBContext>();
-    context.Database.EnsureDeleted(); //For deleting and Re-Seedng the Database
+    //context.Database.EnsureDeleted(); //For deleting and Re-Seedng the Database
     context.Database.EnsureCreated();
 }
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ZooIdentityContext>();
-    context.Database.EnsureDeleted(); //For deleting and Re-Seedng the Database
+    //context.Database.EnsureDeleted(); //For deleting and Re-Seedng the Database
     context.Database.EnsureCreated();
 }
 

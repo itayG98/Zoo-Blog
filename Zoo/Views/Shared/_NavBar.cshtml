@@ -14,29 +14,42 @@
                         Catalog
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Manager options
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item " asp-controller="Manager" asp-action="Create">Create animals</a></li>
-                        <li><a class="dropdown-item " asp-controller="Manager" asp-action="Index">Update catalog</a></li>
-                    </ul>
-                </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Manager options
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item " asp-controller="Manager" asp-action="Create">Create animals</a></li>
+                            <li><a class="dropdown-item " asp-controller="Manager" asp-action="Index">Update catalog</a></li>
+                        </ul>
+                    </li>
+                }
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item active me-1">
-                    <a asp-action="Login" asp-controller="User" class="nav-link active fw-bolder">
-                        Login
-                    </a>
-                </li>
-                <li class="nav-item active me-1">
-                    <a asp-action="SignUp" asp-controller="User" class="nav-link active fw-bolder">
-                        Sign Up
-                    </a>
-                </li>
+                @if (!User.Identity!.IsAuthenticated)
+                {
+                    <li class="nav-item active me-1">
+                        <a asp-action="Login" asp-controller="User" class="nav-link active fw-bolder">
+                            Login
+                        </a>
+                    </li>
+                    <li class="nav-item active me-1">
+                        <a asp-action="SignUp" asp-controller="User" class="nav-link active fw-bolder">
+                            Sign Up
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item active me-1">
+                        <a asp-action="LogOut" asp-controller="User" class="nav-link active fw-bolder">
+                            Log Out
+                        </a>
+                    </li>
+                }
             </ul>
-
         </div>
     </div>
 </nav>

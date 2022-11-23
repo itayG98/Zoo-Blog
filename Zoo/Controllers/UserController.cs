@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Model.Models;
 
 namespace Zoo.Controllers
 {
+    [AllowAnonymous]
     public class UserController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -68,6 +70,16 @@ namespace Zoo.Controllers
                 }
             }
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> LogOut() 
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                await _signInManager.SignOutAsync();
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
