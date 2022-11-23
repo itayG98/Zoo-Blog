@@ -19,29 +19,68 @@ namespace Model.DAL
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            var hasher = new PasswordHasher<IdentityUser>();
             base.OnModelCreating(builder);
-            builder.Entity<IdentityRole>().HasData(new List<IdentityRole>
+
+            IdentityRole adminRole = new IdentityRole()
             {
-                new IdentityRole() {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "Admin",
-                    NormalizedName = "ADMIN"
-            },
-                new IdentityRole() {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "User",
-                    NormalizedName = "USER"
-                  },
-                });
-            IdentityRole adminRole = new IdentityRole() { Name = "Admin" };
+                Id = Guid.NewGuid().ToString(),
+                Name = "Admin",
+                NormalizedName = "ADMIN"
+            };
+            IdentityRole userRole = new IdentityRole()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "User",
+                NormalizedName = "USER"
+            };
             IdentityUser admin = new IdentityUser()
             {
-                UserName = "Itay",
-                Email = "Stam@gmail.com",
+                Id = Guid.NewGuid().ToString(),
+                UserName = "Admin",
+                NormalizedUserName = "ADMIN",
+                Email = "admin@gmail.com",
+                NormalizedEmail = "admin@gmail.com".ToUpper(),
                 EmailConfirmed = true,
                 PhoneNumber = "1234567890",
-                PhoneNumberConfirmed = true
+                PhoneNumberConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "1234ABcd@")
             };
+            IdentityUser user = new IdentityUser()
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName = "User",
+                NormalizedUserName= "USER",
+                Email = "user@gmail.com",
+                NormalizedEmail = "user@gmail.com".ToUpper(),
+                EmailConfirmed = true,
+                PhoneNumber = "1234567891",
+                PhoneNumberConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "1234ABcd@")
+            };
+            IdentityUserRole<string> adminRoleDict = new IdentityUserRole<string>
+            {
+                UserId = admin.Id,
+                RoleId = adminRole.Id
+            };
+            IdentityUserRole<string> userRoleDict = new IdentityUserRole<string>
+            {
+                UserId = user.Id,
+                RoleId = userRole.Id
+            };
+
+            builder.Entity<IdentityRole>().HasData(new List<IdentityRole>
+            {
+                adminRole,
+                userRole
+                });
+            builder.Entity<IdentityUser>().HasData(new List<IdentityUser>
+            {
+                admin,
+                user
+            });
+            builder.Entity<IdentityUserRole<string>>().HasData(adminRoleDict, userRoleDict);
+
         }
     }
 }
