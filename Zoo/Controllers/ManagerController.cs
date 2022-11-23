@@ -3,9 +3,12 @@ using Model.Repositories;
 using Model.Models;
 using Model.Services;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Zoo.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ManagerController : Controller
     {
         private readonly AnimalRepository _animelRepository;
