@@ -41,14 +41,14 @@ namespace Zoo.Controllers
         }
 
         [HttpGet]
-        public IActionResult SignUp()
+        public IActionResult Register()
         {
             return View(new SignUpModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SignUp(SignUpModel user)
+        public async Task<IActionResult> Register(SignUpModel user)
         {
             if (ModelState.IsValid)
             {
