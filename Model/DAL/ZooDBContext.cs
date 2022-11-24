@@ -1,18 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Model.Models;
 using Model.Services;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq.Expressions;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Model.DAL
 {
     public class ZooDBContext : DbContext
     {
-        public ZooDBContext(DbContextOptions options) : base(options)
+        public ZooDBContext(DbContextOptions<ZooDBContext> options) : base(options)
         {
         }
 
@@ -47,7 +41,7 @@ namespace Model.DAL
             Animal wagtail = new() { ID = Guid.NewGuid(), Name = "Wagtail", BirthDate = new DateTime(2011, 12, 12), Description = "Test", CategoryID = Avian.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/wagtail.jpg") };
             Animal bee = new() { ID = Guid.NewGuid(), Name = "Bee", BirthDate = new DateTime(2011, 12, 12), Description = "Test", CategoryID = Insect.CategoryID, ImageRawData = ImagesFormater.ImageToBytesArrayFromLocalPath("InitImages/Bee.png") };
 
-            modelBuilder.Entity<Animal>().HasData(Elephant, Eagel, Squirl, Monkey, Cow, Dolphin, Lion, Lizard, Owl, Shark, Snake, Spider, wagtail,bee);
+            modelBuilder.Entity<Animal>().HasData(Elephant, Eagel, Squirl, Monkey, Cow, Dolphin, Lion, Lizard, Owl, Shark, Snake, Spider, wagtail, bee);
 
             modelBuilder.Entity<Comment>().HasData(
                 new Comment() { AnimalID = Eagel.ID, Content = "First init comment", CommentId = Guid.NewGuid() },
