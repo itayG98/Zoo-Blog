@@ -1,4 +1,5 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Model.DAL;
 using Model.Models;
 using Model.Repositories;
@@ -6,7 +7,7 @@ using NUnit.Framework.Internal;
 
 namespace ModelTests
 {
-   
+
     public class SyncRepositoryTest
     {
         private ZooDBContext _context;
@@ -25,7 +26,10 @@ namespace ModelTests
         [SetUp]
         public void Setup()
         {
-            _connString = "Data Source=MockDB.db;";
+            var config = new ConfigurationBuilder()
+                         .AddJsonFile("AppConfig.json", false, true)
+                         .Build();
+            _connString = config.GetConnectionString("AsyncMockDb");
             byte[] DeafualtRawData = Animal.DeafualtRawData;
             var optionsBuilder = new DbContextOptionsBuilder<ZooDBContext>();
             optionsBuilder.UseSqlite(_connString);

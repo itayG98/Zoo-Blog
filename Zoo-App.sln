@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zoo", "Zoo\Zoo.csproj", "{54138680-3D87-4CCF-BB91-0C680FC0BB98}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_Test", "ModelTests\DAL_Test.csproj", "{302CA7FE-1213-4379-B32C-C879CF3FD21C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{A999D248-8A30-4EF9-B424-E4545A5DDD97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{54138680-3D87-4CCF-BB91-0C680FC0BB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54138680-3D87-4CCF-BB91-0C680FC0BB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54138680-3D87-4CCF-BB91-0C680FC0BB98}.Release|Any CPU.Build.0 = Release|Any CPU
-		{302CA7FE-1213-4379-B32C-C879CF3FD21C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{302CA7FE-1213-4379-B32C-C879CF3FD21C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{302CA7FE-1213-4379-B32C-C879CF3FD21C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{302CA7FE-1213-4379-B32C-C879CF3FD21C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A999D248-8A30-4EF9-B424-E4545A5DDD97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A999D248-8A30-4EF9-B424-E4545A5DDD97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A999D248-8A30-4EF9-B424-E4545A5DDD97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A999D248-8A30-4EF9-B424-E4545A5DDD97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
