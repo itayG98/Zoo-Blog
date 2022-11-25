@@ -12,7 +12,7 @@ This Asp.NetCore web app demonstrates MVC pattern with one Layout view contains 
 I included one View-Component in order to keep the animels exploring divs more common between pages and styled using
 boostrap libary
 
- ## Model
+ ## Model (Entity Framwork Core)
  
 <p align="center" >MSSQL Diagram</p>
 <p align="center">
@@ -59,6 +59,20 @@ https://github.com/itayG98/Zoo-Blog/blob/4cb7b9c64a162334470dfd2d8aff94882166ae0
 <p align="center">
   <img width="700"  src="https://user-images.githubusercontent.com/91791115/202901759-39421184-95c9-4a33-bd18-38543c79cc81.jpg">
 </p>
+
+## Authentication && Authorization (Identity)
+
+I used Identity Nuget and  seperate context in order to authenticate and authorize users in my web application and registering and loging in handels by model helpers named 
+LoginModel  and SignUpModel 
+In the app there are 3 types of users "Admin" , "User" adn Anonymous .
+The manager role can use the Manager controller and has anchor nav-link to creation and update .
+every signed user can comment on animals in the application (including managers).
+Anonymous user can only scroll through the animels catalog page or Register/Log In.
+  <p align="center" > Registering action :</p>
+<p align="center">
+https://github.com/itayG98/Zoo-Blog/blob/351696545913e0b69f2dcdddba8a264dc621e052/Zoo/Controllers/UserController.cs#L49-L74
+</p>
+
 
 ## Unit Testing
 This web app solution includes one class of testing for the repository layer checking and validating the who ReposiroeyBase class for both sunc and async method .
