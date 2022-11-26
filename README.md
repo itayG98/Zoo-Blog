@@ -75,7 +75,7 @@ https://github.com/itayG98/Zoo-Blog/blob/351696545913e0b69f2dcdddba8a264dc621e05
 
 
 ## Unit Testing
-This web app solution includes one class of testing for the repository layer checking and validating the who ReposiroeyBase class for both sunc and async method .
+This web app solution includes one Xunit project of testing for the repository layer checking and validating the ReposiroeyBase class for both sync and async methods .
  
   <p align="center" > Test example :</p>
 <p align="center">
