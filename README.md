@@ -1,5 +1,5 @@
 # Zoo-Blog web app
-## Asp Net.Core MVC  web app using MSSQL as database and EF6
+## Asp Net.Core MVC web app using MSSQL EF6 Identity and Boostrap
 
 <p align="center" >Main catalog page where you can scroll and choose animel to explore and comment</p>
 <p align="center">
