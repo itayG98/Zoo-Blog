@@ -12,11 +12,11 @@ namespace Model.Models.Attributes
                 int Years = (int)DateTime.Now.Subtract(dateTime).TotalDays / 365;
                 if (Years > MAX_LIFE_TIME)
                 {
-                    return new ValidationResult("This birth date is unvalid .Please specify an earlier date");
+                    return new ValidationResult("This birth date is unvalid .Please specify a date afterwards");
                 }
                 else if (Years < 0)
                 {
-                    return new ValidationResult("This birth date is unvalid .Please specify a date afterwards");
+                    return new ValidationResult("This birth date is unvalid .Please specify an earlier date");
                 }
                 else if (dateTime.Subtract(DateTime.Now).TotalDays > 0)
                 {
